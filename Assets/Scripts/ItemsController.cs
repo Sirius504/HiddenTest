@@ -7,10 +7,13 @@ public class ItemsController : MonoBehaviour
 {
     [SerializeField] private int _maxAvailable = 3;
 
-    private HashSet<HiddenItem> _uncollectedItems = new();
+    private HashSet<HiddenItem> _itemsToCollect = new();
     private HashSet<HiddenItem> _collectedItems = new();
 
-    private IReadOnlyCollection<HiddenItem> _availableItems;
+    private HiddenItem[] _availableItems;
+
+    public IReadOnlyCollection<HiddenItem> AvalilableItems => _availableItems;
+    public IReadOnlyCollection<HiddenItem> ItemsToCollect => _itemsToCollect;
 
 
     private void Start()
@@ -21,7 +24,7 @@ public class ItemsController : MonoBehaviour
             if (!child.TryGetComponent<HiddenItem>(out var item)) continue;
 
             item.Interactable = false;
-            _uncollectedItems.Add(item);
+            _itemsToCollect.Add(item);
 
             item.OnCollected += OnItemCollected;
             item.OnDestroyed += OnItemDestroyed;
@@ -34,22 +37,23 @@ public class ItemsController : MonoBehaviour
     {
         item.OnDestroyed -= OnItemDestroyed;
         item.OnCollected -= OnItemCollected;
-        _uncollectedItems.Remove(item);        
+        _itemsToCollect.Remove(item);        
     }
 
     private void UpdateAvailableItems()
     {
-        _uncollectedItems.ExceptWith(_collectedItems);
-        _availableItems = _uncollectedItems.Take(_maxAvailable).ToArray();
+        _itemsToCollect.ExceptWith(_collectedItems);
+        _availableItems = _itemsToCollect.Take(_maxAvailable).ToArray();
         foreach (var item in _availableItems)
         {
             item.Interactable = true;
+            Debug.Log(item.Name);
         }
     }
 
     public void OnItemCollected(HiddenItem item)
     {
-        if (!_uncollectedItems.Contains(item))
+        if (!_itemsToCollect.Contains(item))
         {
             Debug.LogError($"Collected unregistered item {item.Name}");
             return;

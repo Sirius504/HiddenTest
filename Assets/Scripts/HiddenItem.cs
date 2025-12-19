@@ -41,6 +41,7 @@ public class HiddenItem : MonoBehaviour
     {
         if (_collected) return;
         SetInteractable(false);
+        _spriteRenderer.enabled = false;
         OnCollected?.Invoke(this);
         _collected = true;
     }
