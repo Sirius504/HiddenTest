@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Rollerblades
   m_EditorClassIdentifier: 
   Name: Rollerblades
+  Enabled: 1
   Icon: {fileID: 7505169124517952646, guid: d1d88870628164c4b8c456399e467493, type: 3}

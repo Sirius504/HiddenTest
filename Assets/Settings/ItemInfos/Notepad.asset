@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Notepad
   m_EditorClassIdentifier: 
   Name: Notepad
+  Enabled: 1
   Icon: {fileID: 6201403155166670193, guid: eb32e3f27b0b16b4e9bccd7fb3a0bcc4, type: 3}

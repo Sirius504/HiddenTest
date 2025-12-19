@@ -42,7 +42,7 @@ public class ItemsUI : MonoBehaviour
         var i = 0;
         foreach (var itemInfo in itemInfos) 
         {
-            _items[i++].Refresh(itemInfo, _levelSettings.ShowIcons);
+            _items[i++].Refresh(itemInfo, _levelSettings.ShowIcons, _levelSettings.ShowNames);
         }
     }
 

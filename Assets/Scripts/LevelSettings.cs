@@ -8,5 +8,6 @@ public class LevelSettings : ScriptableObject
     public int MaxItemsAvailable;    
     public int TimerInSeconds;
     public bool ShowIcons;
+    public bool ShowNames;
     public List<ItemInfo> ItemInfos;
 }

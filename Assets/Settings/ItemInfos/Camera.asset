@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Camera
   m_EditorClassIdentifier: 
   Name: Camera
+  Enabled: 1
   Icon: {fileID: -2736605910521569486, guid: 3e4117a1689d4c14fbf7a1a284baa396, type: 3}

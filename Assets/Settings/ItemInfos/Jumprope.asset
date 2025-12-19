@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Jumprope
   m_EditorClassIdentifier: 
   Name: Jumprope
+  Enabled: 1
   Icon: {fileID: 7747308077666736328, guid: 7f7bebbfca1f91d42afd9b0ec68fb92a, type: 3}

@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using VContainer;
 
 public class ItemsController : MonoBehaviour
 {
+    [Inject] private LevelSettings _levelSettings;
     [SerializeField] private int _maxAvailable = 3;
 
     private HashSet<HiddenItem> _itemsToCollect = new();
@@ -23,12 +25,15 @@ public class ItemsController : MonoBehaviour
         {
             var child = transform.GetChild(i);
             if (!child.TryGetComponent<HiddenItem>(out var item)) continue;
+            if (!item.ItemInfo.Enabled) continue;
 
             _itemsToCollect.Add(item);
 
             item.OnCollected += OnItemCollected;
             item.OnDestroyed += OnItemDestroyed;
         }
+        int GetIndex(HiddenItem item) => _levelSettings.ItemInfos.IndexOf(item.ItemInfo);
+        _itemsToCollect = _itemsToCollect.OrderBy(GetIndex).ToHashSet();
     }
 
     private void Start()

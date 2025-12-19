@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Level Settings
   m_EditorClassIdentifier: 
   MaxItemsAvailable: 3
-  TimerInSeconds: 120
-  ShowIcons: 0
+  TimerInSeconds: 68
+  ShowIcons: 1
+  ShowNames: 1
   ItemInfos:
   - {fileID: 11400000, guid: 04dbeeaf96e898b4c8f3376a6e1e9a42, type: 2}
-  - {fileID: 11400000, guid: 74fd155362682094091d3b07d19546f0, type: 2}
+  - {fileID: 11400000, guid: c569425470b54664f8d3710bbb7cc932, type: 2}
   - {fileID: 11400000, guid: 44e492efd01dd814e975d20d5bc121a1, type: 2}
+  - {fileID: 11400000, guid: 74fd155362682094091d3b07d19546f0, type: 2}
   - {fileID: 11400000, guid: 7761a76f683d27d448d0b4e2f53616f0, type: 2}
   - {fileID: 11400000, guid: 1255fc4ce5d5fae4cbc4b4a66ad61d41, type: 2}
-  - {fileID: 11400000, guid: c569425470b54664f8d3710bbb7cc932, type: 2}
