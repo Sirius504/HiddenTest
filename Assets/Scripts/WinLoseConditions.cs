@@ -33,6 +33,7 @@ public class WinLoseConditions : MonoBehaviour
 
     private void Start()
     {
+        _timer.TimerStart();
         CurrentState = GameState.Running;
     }
 

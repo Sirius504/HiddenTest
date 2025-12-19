@@ -16,20 +16,26 @@ public class ItemsController : MonoBehaviour
     public IReadOnlyCollection<HiddenItem> ItemsToCollect => _itemsToCollect;
 
 
-    private void Start()
+    private void Awake()
     {
         for(var i = 0; i < transform.childCount; i++)
         {
             var child = transform.GetChild(i);
             if (!child.TryGetComponent<HiddenItem>(out var item)) continue;
 
-            item.Interactable = false;
             _itemsToCollect.Add(item);
 
             item.OnCollected += OnItemCollected;
             item.OnDestroyed += OnItemDestroyed;
         }
+    }
 
+    private void Start()
+    {
+        foreach(var item in _itemsToCollect)
+        {
+            item.Interactable = false;
+        }
         UpdateAvailableItems();
     }
 

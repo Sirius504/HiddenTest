@@ -8,6 +8,7 @@ public class GameScope : LifetimeScope
     [SerializeField] private ItemsController _itemsController;
     [SerializeField] private Timer _timer;
     [SerializeField] private WinLoseConditions _winLoseConditions;
+    [SerializeField] private SceneController _sceneController;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -18,5 +19,7 @@ public class GameScope : LifetimeScope
         builder.RegisterComponent(_levelSettings);
         builder.RegisterComponent(_itemsController);
         builder.RegisterComponent(_timer);
+        builder.RegisterComponent(_winLoseConditions);
+        builder.RegisterComponent(_sceneController);
     }
 }
