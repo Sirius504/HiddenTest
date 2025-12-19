@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class HiddenItem : MonoBehaviour
 {
+    [SerializeField] private ItemInfo _itemInfo;
     private BoxCollider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
@@ -21,9 +22,11 @@ public class HiddenItem : MonoBehaviour
         get => _interactable;
         set => SetInteractable(value);
     }
+    public ItemInfo ItemInfo => _itemInfo;
 
     void Awake()
     {
+        if (_itemInfo == null) throw new NullReferenceException($"ItemInfo for object {Name} is empty.");
         _collider = GetComponent<BoxCollider2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }

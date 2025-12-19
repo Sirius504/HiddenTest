@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdbfa6dd37421134f827ad46c707f117, type: 3}
+  m_Name: Candlestick
+  m_EditorClassIdentifier: 
+  Name: Candlestick
+  Icon: {fileID: -353173741202961817, guid: dfea31a3aca73a641bc6f4a588ead90b, type: 3}

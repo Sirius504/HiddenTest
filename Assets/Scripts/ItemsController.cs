@@ -14,6 +14,7 @@ public class ItemsController : MonoBehaviour
 
     public IReadOnlyCollection<HiddenItem> AvalilableItems => _availableItems;
     public IReadOnlyCollection<HiddenItem> ItemsToCollect => _itemsToCollect;
+    public event Action OnAvailableItemsUpdated;
 
 
     private void Awake()
@@ -53,8 +54,8 @@ public class ItemsController : MonoBehaviour
         foreach (var item in _availableItems)
         {
             item.Interactable = true;
-            Debug.Log(item.Name);
         }
+        OnAvailableItemsUpdated?.Invoke();
     }
 
     public void OnItemCollected(HiddenItem item)
