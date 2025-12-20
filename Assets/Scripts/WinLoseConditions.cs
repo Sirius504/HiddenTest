@@ -39,13 +39,13 @@ public class WinLoseConditions : MonoBehaviour
 
     private void Update()
     {
-        if (!_timer.IsRunning && _itemsController.AvalilableItems.Any())
+        if (!_timer.IsRunning && _itemsController.ItemsToCollect.Any())
         {
             CurrentState = GameState.Defeat;
             return;
         }
 
-        if (!_itemsController.AvalilableItems.Any())
+        if (!_itemsController.ItemsToCollect.Any())
         {
             CurrentState = GameState.Victory;
         }

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level Settings", menuName = "Scriptable Objects/Level Settings")]
 public class LevelSettings : ScriptableObject
 {
+    [Range(1,10)]
     public int MaxItemsAvailable;    
     public int TimerInSeconds;
     public bool ShowIcons;

@@ -7,7 +7,6 @@ using VContainer;
 public class ItemsController : MonoBehaviour
 {
     [Inject] private LevelSettings _levelSettings;
-    [SerializeField] private int _maxAvailable = 3;
 
     private HashSet<HiddenItem> _itemsToCollect = new();
     private HashSet<HiddenItem> _collectedItems = new();
@@ -55,7 +54,7 @@ public class ItemsController : MonoBehaviour
     private void UpdateAvailableItems()
     {
         _itemsToCollect.ExceptWith(_collectedItems);
-        _availableItems = _itemsToCollect.Take(_maxAvailable).ToArray();
+        _availableItems = _itemsToCollect.Take(_levelSettings.MaxItemsAvailable).ToArray();
         foreach (var item in _availableItems)
         {
             item.Interactable = true;

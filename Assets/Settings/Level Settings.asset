@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level Settings
   m_EditorClassIdentifier: 
   MaxItemsAvailable: 3
-  TimerInSeconds: 120
+  TimerInSeconds: 5
   ShowIcons: 1
   ShowNames: 1
   ItemInfos:
