@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
@@ -6,11 +8,13 @@ using UnityEngine;
 public class HiddenItem : MonoBehaviour
 {
     [SerializeField] private ItemInfo _itemInfo;
+    [SerializeField] private float _animationTime = 1f;
     private BoxCollider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
     private bool _interactable = false;
     private bool _collected;
+    private Coroutine _dissapearCoroutine;
 
     public string Name => gameObject.name;
     public bool Collected => _collected;
@@ -44,13 +48,34 @@ public class HiddenItem : MonoBehaviour
     {
         if (_collected || !Interactable) return;
         SetInteractable(false);
-        _spriteRenderer.enabled = false;
+        _dissapearCoroutine = StartCoroutine(DissapearCoroutine());
         OnCollected?.Invoke(this);
         _collected = true;
+    }
+
+    private IEnumerator DissapearCoroutine()
+    {
+        float elapsedTime = 0f;
+
+        var startColor = _spriteRenderer.color;
+        while (elapsedTime < _animationTime)
+        {            
+            var newColor = startColor;
+            elapsedTime += Time.deltaTime;
+            var alpha = Mathf.Lerp(startColor.a, 0f, elapsedTime / _animationTime);
+            newColor.a = alpha;
+            _spriteRenderer.color = newColor;
+            yield return null;
+        }
+
+        _dissapearCoroutine = null;
+        _spriteRenderer.enabled = false;
     }
 
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
+        StopAllCoroutines();
+        _dissapearCoroutine = null;
     }
 }
