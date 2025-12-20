@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
+using VContainer;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class HiddenItem : MonoBehaviour
 {
+    [Inject] private WinLoseConditions _winLoseConditions;
     [SerializeField] private ItemInfo _itemInfo;
     [SerializeField] private float _animationTime = 1f;
     private BoxCollider2D _collider;
@@ -46,7 +47,9 @@ public class HiddenItem : MonoBehaviour
 
     public void Collect()
     {
-        if (_collected || !Interactable) return;
+        if (_winLoseConditions.CurrentState != GameState.Running
+            || _collected 
+            || !Interactable) return;
         SetInteractable(false);
         _dissapearCoroutine = StartCoroutine(DissapearCoroutine());
         OnCollected?.Invoke(this);

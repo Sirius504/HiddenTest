@@ -78,4 +78,13 @@ public class ItemsController : MonoBehaviour
 
         UpdateAvailableItems();
     }
+
+    private void OnDestroy()
+    {
+        foreach (var item in _itemsToCollect)
+        {
+            item.OnDestroyed -= OnItemDestroyed;
+            item.OnCollected -= OnItemCollected;
+        }
+    }
 }

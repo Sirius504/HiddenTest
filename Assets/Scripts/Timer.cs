@@ -1,14 +1,16 @@
 using System;
 using UnityEngine;
+using VContainer;
 
 public class Timer : MonoBehaviour
 {
+    [Inject] private LevelSettings _levelSettings;
+
     private float _startTime;
     private bool _isRunning;
 
-    [SerializeField] private float _timeInSeconds;
-    public float TotalTime => _timeInSeconds;
-    public float TimeRemaining => Math.Max(0f, _timeInSeconds - (Time.time - _startTime));
+    public float TotalTime => _levelSettings.TimerInSeconds;
+    public float TimeRemaining => Math.Max(0f, _levelSettings.TimerInSeconds - (Time.time - _startTime));
 
     public bool IsRunning => _isRunning;
 

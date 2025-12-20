@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Candlestick
   Enabled: 1
-  Icon: {fileID: -353173741202961817, guid: dfea31a3aca73a641bc6f4a588ead90b, type: 3}
+  Icon: {fileID: 21300000, guid: dfea31a3aca73a641bc6f4a588ead90b, type: 3}
